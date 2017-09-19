@@ -10,6 +10,7 @@ n = length(theta);
 
 % You need to return the following variables correctly 
 J = 0;
+Jnot = 0;
 grad = zeros(size(theta));
 
 % ====================== YOUR CODE HERE ======================
@@ -23,14 +24,15 @@ hypo = sigmoid(X * theta);
 for i = 1:m
 J = J + (-y(i) .* log(hypo(i)) - (1 - y(i)) .* log(1 - hypo(i)));
 endfor
-for k = 2:n
-  J = J + theta(k)^2;
-endfor
 J = J / m;
-J = J + (lambda / (2 * m));
+for k = 2:n
+  Jnot = Jnot + theta(k)^2;
+endfor
+Jnot = Jnot * (lambda / (2 * m));
 
+J = J + Jnot;
   
-grad = (1 / m) .* ((hypo - y)' * X)';
+grad = (1 / m) * ((hypo - y)' * X)';
 for l = 2:n
   grad(l) = grad(l)  + ((lambda / m) * theta(l));
 endfor

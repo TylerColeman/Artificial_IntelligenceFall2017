@@ -26,10 +26,14 @@ endfor
 for k = 2:n
   J = J + theta(k)^2;
 endfor
-  J = J / m;
-  J = J + (lambda / (2 * m));
-grad = (1 / m) .* ((hypo - y)' * X)' + ((lambda / m) * theta);
+J = J / m;
+J = J + (lambda / (2 * m));
 
+  
+grad = (1 / m) .* ((hypo - y)' * X)';
+for l = 2:n
+  grad(l) = grad(l)  + ((lambda / m) * theta(l));
+endfor
 
 
 

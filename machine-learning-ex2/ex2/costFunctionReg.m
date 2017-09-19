@@ -19,8 +19,12 @@ grad = zeros(size(theta));
 %               Compute the partial derivatives and set grad to the partial
 %               derivatives of the cost w.r.t. each parameter in theta
 
+%Make small x the transpose of X
 x = X';
+%Vector of guesses
 hypo = sigmoid(X * theta);
+
+%Cost function with the regularization
 for i = 1:m
 J = J + (-y(i) .* log(hypo(i)) - (1 - y(i)) .* log(1 - hypo(i)));
 endfor
@@ -29,10 +33,11 @@ for k = 2:n
   Jnot = Jnot + theta(k)^2;
 endfor
 Jnot = Jnot * (lambda / (2 * m));
-
 J = J + Jnot;
   
+%Gradient Descent with Regularization
 grad = (1 / m) * ((hypo - y)' * X)';
+%Don't regularize Theta(1)!!!! 
 for l = 2:n
   grad(l) = grad(l)  + ((lambda / m) * theta(l));
 endfor

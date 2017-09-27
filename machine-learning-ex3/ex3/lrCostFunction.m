@@ -35,9 +35,13 @@ grad = zeros(size(theta));
 %           temp(1) = 0;   % because we don't add anything for j = 0  
 %           grad = grad + YOUR_CODE_HERE (using the temp variable)
 %
+x = X';
+hypo = sigmoid(X * theta);
 
+J = (1 / m) * (-y' * log(hypo) - (1 - y') * log(1 - hypo));
 
-
+%Vectorized form of Gradient Descent
+grad = (1 / m) .* ((hypo - y)' * X)';
 
 
 

@@ -37,11 +37,13 @@ grad = zeros(size(theta));
 %
 x = X';
 hypo = sigmoid(X * theta);
-
-J = (1 / m) * (-y' * log(hypo) - (1 - y') * log(1 - hypo));
+theta2 = [0; theta(2:size(theta),:)];
+regular = (lambda / (2*m)) * (theta2' * theta2);
+J = (1 / m) * (-y' * log(hypo) - (1 - y') * log(1 - hypo)) + regular ;
 
 %Vectorized form of Gradient Descent
-grad = (1 / m) .* ((hypo - y)' * X)';
+grad = (1 / m) .* ((hypo - y)' * X)' + ((lambda / m) * theta2);
+
 
 
 

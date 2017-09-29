@@ -36,12 +36,18 @@ grad = zeros(size(theta));
 %           grad = grad + YOUR_CODE_HERE (using the temp variable)
 %
 x = X';
+%get vector of guesses
 hypo = sigmoid(X * theta);
+
+%set the first theta val to zero so it isnt regularized
 theta2 = [0; theta(2:size(theta),:)];
+%vector of regularized thetas
 regular = (lambda / (2*m)) * (theta2' * theta2);
+
+%vectorized cost function
 J = (1 / m) * (-y' * log(hypo) - (1 - y') * log(1 - hypo)) + regular ;
 
-%Vectorized form of Gradient Descent
+%Vectorized form of Gradients
 grad = (1 / m) .* ((hypo - y)' * X)' + ((lambda / m) * theta2);
 
 

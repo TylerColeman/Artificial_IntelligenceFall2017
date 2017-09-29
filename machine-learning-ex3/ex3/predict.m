@@ -21,15 +21,21 @@ p = zeros(size(X, 1), 1);
 %       can use max(A, [], 2) to obtain the max for each row.
 %
 
+%forward propagation
+%layer 1
 a1 = [ones(m,1) X];
 z2 = a1 *Theta1';
+%get layer 2
 a2 = [ones(size(z2),1) sigmoid(z2)];
 z3 = a2*Theta2';
+%get final layer
 a3 = sigmoid(z3);
 
-[pr, x] = max(a3, [], 2);
-
-p = x;
+% get the max prediction and the index that it occurs at
+% using the vector of guesses using a3 this time rather than
+%the inital hypothesis.
+[pr, ind] = max(a3, [], 2);
+p = ind;
 
 
 

@@ -12,9 +12,10 @@ X_poly = zeros(numel(X), p);
 % ====================== YOUR CODE HERE ======================
 % Instructions: Given a vector X, return a matrix X_poly where the p-th 
 %               column of X contains the values of X to the p-th power.
+X = featureNormalize(X);
 X_poly(:,1) = X;
 for i = 2:p
-  
+  X_poly(:,i) = X.*X_poly(:,i-1);
   
 endfor
 

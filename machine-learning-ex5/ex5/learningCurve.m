@@ -46,8 +46,11 @@ for i = 1:m
    % Compute train/cross validation errors using training examples 
    trainX = X(1:i, :);
    trainY = y(1:i);
+   
    theta = trainLinearReg(trainX, trainY, lambda);
+   %training data cost
    error_train(i) = linearRegCostFunction(trainX, trainY, theta, 0)
+   %cross validation cost
    error_val(i) = linearRegCostFunction(Xval, yval, theta, 0);
 
    

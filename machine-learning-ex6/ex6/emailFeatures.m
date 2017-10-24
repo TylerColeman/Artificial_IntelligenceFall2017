@@ -48,8 +48,9 @@ x = zeros(n, 1);
 %
 %
 
-for i = word_indices
-  x(i) = 1;
+for i = 1:size(word_indices)
+  %set x to 1 for every indice that exists in words_indices
+  x(word_indices(i)) = 1;
 end
 
 

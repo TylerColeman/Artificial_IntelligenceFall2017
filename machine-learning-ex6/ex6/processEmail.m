@@ -98,7 +98,10 @@ while ~isempty(email_contents)
     %
 
   for i = 1:length(vocabList)
+    %using the aforementioned string comparison function
     if (strcmp(str, vocabList{i}))
+      %if we find a word in the vocab list from the email contents
+      %add  its index to the word indices.
       word_indices = [word_indices ; i];
     end
   end

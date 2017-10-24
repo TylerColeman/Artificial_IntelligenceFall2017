@@ -15,7 +15,10 @@ sim = 0;
 %               sigma
 %
 %
+
+%get the differences between x1 and x2
 diff = x1 .- x2;
+%gaussian Kernel
 sim = exp(-(sum((diff.^2)) / (2 * (sigma^2))));
 
 

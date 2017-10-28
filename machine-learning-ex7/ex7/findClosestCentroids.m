@@ -21,12 +21,21 @@ idx = zeros(size(X,1), 1);
 % Note: You can use a for-loop over the examples to compute this.
 %
 
+%m = size(X  , 1);
+%
+%for i = 1 : m,
+%	T = [];
+%	for j = 1 : K,
+%		T = [T ; X(i,:)];
+%	end
+%	[Max , idx(i)] = min(sum((T - centroids).^2 , 2));
+%end
 m = size(X  , 1);
 for i = 1:m
   minimum = 999999;
   for j = 1:K
     dist = (X(i,:) - centroids(j,:)) .^ 2;
-    if dist < minimum
+    if sum(dist) < minimum
       minimum = sum(dist);
       idx(i) = j;
     endif

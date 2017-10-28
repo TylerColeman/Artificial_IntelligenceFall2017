@@ -22,11 +22,15 @@ idx = zeros(size(X,1), 1);
 %
 m = size(X  , 1);
 for i = 1:m
+  %initialize large min
   minimum = 999999;
   for j = 1:K
+    %get the distance from X to the current centroid
     dist = (X(i,:) - centroids(j,:)) .^ 2;
+    %if its the current smalles distance it becomes the new smalles distance
     if sum(dist) < minimum
       minimum = sum(dist);
+      %save the centroid index as the idx index
       idx(i) = j;
     endif
   endfor

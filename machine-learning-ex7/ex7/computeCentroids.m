@@ -27,9 +27,12 @@ count = zeros(K, 1);
 % Note: You can use a for-loop over the centroids to compute this.
 %
 for i = 1:m
-count(idx(i)) += 1;
-centroids(idx(i),:) = centroids(idx(i),:) + X(i,:);
+  %add one to the count of the centroid index
+  count(idx(i)) += 1;
+  %add the point in X to the centroid index
+  centroids(idx(i),:) = centroids(idx(i),:) + X(i,:);
 endfor
+%take the average of all centroids to get the new centroid
 for k = 1:size(centroids)
 centroids(k,:) = centroids(k,:) / count(k);
 endfor

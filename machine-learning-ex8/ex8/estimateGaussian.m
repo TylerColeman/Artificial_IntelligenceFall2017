@@ -21,7 +21,10 @@ sigma2 = zeros(n, 1);
 %               should contain variance of the i-th feature.
 %
 
-
+%get average of data set
+mu = mean(X);
+%calculate variance using var function mentioned in pdf
+sigma2 = var(X) * (m-1) / m;
 
 
 

@@ -40,32 +40,21 @@ Theta_grad = zeros(size(Theta));
 %                     partial derivatives w.r.t. to each element of Theta
 
 %hypothesis function and differences
-hypo = X*Theta';
-difference = hypo-Y;
+hypo = X * Theta';
+difference = hypo - Y;
 
 %cost function
-J = sum((difference.^2)(R==1))/2;
+J = sum((difference .^ 2)(R==1)) / 2;
 %regularize both x and theta terms
-J = J + lambda*sum(sum(Theta.^2))/2; 
-J = J + lambda*sum(sum(X.^2))/2;     
+J = J + lambda * sum(sum(Theta .^ 2)) / 2; 
+J = J + lambda * sum(sum(X .^ 2)) / 2;     
 
 %get gradients for X and theta
-X_grad = (difference.*R)*Theta;                 
-Theta_grad = ((difference.*R)'*X);            
+X_grad = (difference .* R) * Theta;                 
+Theta_grad = ((difference .* R)' * X);            
 %regularize gradients
 X_grad = X_grad + (lambda * X);             
 Theta_grad = Theta_grad + (lambda * Theta);
-
-
-
-
-
-
-
-
-
-
-
 % =============================================================
 
 grad = [X_grad(:); Theta_grad(:)];

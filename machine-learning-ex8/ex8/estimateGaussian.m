@@ -24,7 +24,7 @@ sigma2 = zeros(n, 1);
 %get average of data set
 mu = mean(X);
 %calculate variance using var function mentioned in pdf
-sigma2 = var(X) * (m-1) / m;
+sigma2 = var(X) * (m - 1) / m;
 
 
 

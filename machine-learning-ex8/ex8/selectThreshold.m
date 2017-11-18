@@ -32,11 +32,11 @@ for epsilon = min(pval):stepsize:max(pval)
     false_neg = sum((yval==1) & predictions == 0);
 
     %precision and recall as calculated in pdf
-    precision = true_pos/(true_pos+false_pos);
-    recall = true_pos/(true_pos+false_neg);
+    precision = true_pos / (true_pos + false_pos);
+    recall = true_pos / (true_pos + false_neg);
 
     % F1 value as calculated in pdf
-    F1 = (2*precision*recall)/(precision+recall);
+    F1 = (2 * precision * recall) / (precision + recall);
 
 
 
